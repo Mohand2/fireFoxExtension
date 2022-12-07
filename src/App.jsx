@@ -14,26 +14,54 @@ function App() {
 
       const daysAndT = getDaysAndTemp(
         data.daily.time,
-        data.daily.temperature_2m_min
+        data.daily.temperature_2m_min,
+        data.daily_units.temperature_2m_min
       );
-      console.log(daysAndT[0].temp);
+      setweather(daysAndT);
     }
     fetchWeather();
   }, []);
 
-  function getDaysAndTemp(days, temp) {
+  function getDaysAndTemp(days, temp, unit) {
     return days.map((date, index) => {
-      return { date: date, temp: temp[index] };
+      return { day: getDay(date), date: date, temp: temp[index], unit: unit };
     });
+  }
+
+  function getDay(date) {
+    const weekday = [
+      'Sunday',
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+    ];
+
+    const d = new Date(date);
+    const day = weekday[d.getDay()];
+    return day;
   }
 
   const loading = <div>Loading...</div>;
 
-  console.log(weather.daily);
-
-  return <p>test</p>;
-
-  // <div className="App">{weather ? weather.daily : loading}</div>;
+  return (
+    <div className="weather">
+      <h1>Mchedallah</h1>
+      {weather.length
+        ? weather.map((day, index) => (
+            <div key={index}>
+              <p>{day.day}</p>
+              <p>{day.date}</p>
+              <p>
+                {day.temp} <spna>{day.unit}</spna>{' '}
+              </p>
+            </div>
+          ))
+        : loading}
+    </div>
+  );
 }
 
 export default App;

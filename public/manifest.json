@@ -1,0 +1,19 @@
+{
+  "name": "Weather app",
+  "description": " Get weather info for mchedallah",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "homepage_url": "https://github.com/mohand2",
+  "browser_action": {
+    "default_popup": "index.html",
+    "default_title": "Weather app",
+    "default_icon": {
+      "48": "icons8-cloud-48.png",
+      "96": "icons8-cloud-96.png"
+    }
+  },
+  "icons": {
+    "48": "icons8-cloud-48.png",
+    "96": "icons8-cloud-96.png"
+  }
+}
