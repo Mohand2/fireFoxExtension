@@ -51,7 +51,7 @@ function App() {
       <h1>Mchedallah</h1>
       {weather.length
         ? weather.map((day, index) => (
-            <div key={index}>
+            <div className="weather-card" key={index}>
               <p>{day.day}</p>
               <p>{day.date}</p>
               <p>
